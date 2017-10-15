@@ -2,6 +2,10 @@ BitValor
 ========
 
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![bitHound Code](https://www.bithound.io/github/brunocarvalhodearaujo/order-book/badges/code.svg)](https://www.bithound.io/github/brunocarvalhodearaujo/order-book)
+[![bitHound Overall Score](https://www.bithound.io/github/brunocarvalhodearaujo/order-book/badges/score.svg)](https://www.bithound.io/github/brunocarvalhodearaujo/order-book)
+[![bitHound Dependencies](https://www.bithound.io/github/brunocarvalhodearaujo/order-book/badges/dependencies.svg)](https://www.bithound.io/github/brunocarvalhodearaujo/order-book/master/dependencies/npm)
+[![bitHound Dev Dependencies](https://www.bithound.io/github/brunocarvalhodearaujo/order-book/badges/devDependencies.svg)](https://www.bithound.io/github/brunocarvalhodearaujo/order-book/master/dependencies/npm)
 
 Este projeto recupera os dados do livro de ofertas (ORDER BOOK) do [bitvalor](http://bitvalor.com/api) e permite a busca
 atraves de filtros atraves de uma api REST.
