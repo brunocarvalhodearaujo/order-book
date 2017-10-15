@@ -8,7 +8,7 @@ BitValor
 [![bitHound Dev Dependencies](https://www.bithound.io/github/brunocarvalhodearaujo/order-book/badges/devDependencies.svg)](https://www.bithound.io/github/brunocarvalhodearaujo/order-book/master/dependencies/npm)
 
 Este projeto recupera os dados do livro de ofertas (ORDER BOOK) do [bitvalor](http://bitvalor.com/api) e permite a busca
-atraves de filtros atraves de uma api REST.
+atraves de filtros usando uma interface REST.
 
 ### Rodando o servidor no localhost
 
