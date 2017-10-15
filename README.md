@@ -9,7 +9,7 @@ atraves de filtros atraves de uma api REST.
 ### Rodando o servidor no localhost
 
 ````sh
-$ git clone https://github.com/brunocarvalhodearaujo/bitvalor.git
+$ git clone https://github.com/brunocarvalhodearaujo/order-book.git
 $ cd bitvalor
 $ npm install
 $ npm start
