@@ -1,9 +1,9 @@
-import NodeCache from 'node-cache'
+const NodeCache = require('node-cache')
 
 /**
  * A simple caching module that has set, get and delete methods and works a little bit like memcached.
  */
-export class Cache {
+module.exports = class Cache {
   /**
    * a simple singleton to store a global variable
    * @returns {NodeCache}

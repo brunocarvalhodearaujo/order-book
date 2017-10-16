@@ -1,6 +1,6 @@
 /* eslint-env jest */
-import supertest from 'supertest'
-import server from '../src'
+const supertest = require('supertest')
+const server = require('../src')
 
 afterAll(() => {
   server.close()
@@ -9,7 +9,7 @@ afterAll(() => {
 describe('GET /404', () => {
   it('should return 404 for non-existent URLs', async () => {
     await supertest(server)
-      .get('/notfound')
+      .get('/404')
       .expect(404)
   })
 })

@@ -1,81 +1,54 @@
-import express from 'express'
-import bodyParser from 'body-parser'
-import cors from 'cors'
-import helmet from 'helmet'
-import router from 'express-slim-router'
-import morgan from 'morgan'
-import path from 'path'
-import exception from '@paper/exception'
-import compression from 'compression'
-import { version } from '../package.json'
+const express = require('express')
+const morgan = require('morgan')
+const cors = require('cors')
+const bodyParser = require('body-parser')
+const compression = require('compression')
+const helmet = require('helmet')
+const routes = require('./routes')
+const { version } = require('../package.json')
 
-// Set the default environment to be `development`
-process.env.NODE_ENV = process.env.NODE_ENV || 'development'
-// Set the default port to be `2650`
-process.env.PORT = process.env.PORT || 3000
-
-const server = express()
-
-/**
- * Normalize a port into a number, string, or false.
- * @param {number} val
- * @returns {number|boolean}
- */
-function normalizePort (val) {
-  const port = parseInt(val, 10)
-
-  /* istanbul ignore next */
-  if (isNaN(port)) {
-    // named pipe
-    return val
-  }
-
-  if (port >= 0) {
-    // port number
-    return port
-  }
-
-  return false
-}
-
-/* istanbul ignore next */
-if (server.get('env') !== 'production') {
-  server.set('json spaces', 2)
-  process.on('unhandledRejection', (reason, p) => {
-    console.log('Possibly Unhandled Rejection at: Promise ', p, ' reason: ', reason)
-  })
-}
-
-const port = normalizePort(process.env.PORT)
-
-server.disable('etag')
-server.disable('x-powered-by')
-server.set('port', port)
+const app = express()
 
 // 3rd party middleware
-server.use(cors())
-server.use(bodyParser.json())
-server.use(bodyParser.urlencoded({ extended: true }))
-server.use(helmet())
-server.use(compression())
+app.use(cors())
+app.use(morgan('dev'))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(compression())
+app.use(helmet())
 
-// logger
-server.use(morgan('dev'))
+// custom config
+app.disable('etag')
+app.disable('x-powered-by')
 
-server.get('/', (request, response, next) => {
+// load routes
+app.use(routes)
+
+/* istanbul ignore next */
+if (app.get('env') !== 'production') {
+  app.set('json spaces', 2)
+}
+
+app.get('/', (request, response) => {
   response.send({ version })
 })
 
-// load api endpoints in routers
-server.use('/', router(path.join(__dirname, 'controllers')))
-
-// return 404 for non-existent URLs
-server.use('*', (req, res, next) => next(404))
-
-// treats all api errors
-server.use(exception())
-
-// listen and export server for unit tests
-export default server.listen(port, () => {
-  console.log(`servidor iniciando na porta: ${server.get('port')}`)
+// catch 404 and forward to error handler
+app.use((req, res, next) => {
+  var err = new Error('Not Found')
+  err.status = 404
+  next(err)
 })
+
+// error handler
+app.use((error, request, response, next) => {
+  // set locals, only providing error in development
+  response.locals.message = error.message
+  response.locals.error = request.app.get('env') === 'development' ? error : {}
+
+  // render the error page
+  response.status(error.status || 500)
+  response.json({ code: error.status, message: error.message })
+})
+
+module.exports = app

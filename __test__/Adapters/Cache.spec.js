@@ -1,5 +1,5 @@
 /* eslint-env jest */
-import { Cache } from '../../src/adapters/Cache'
+const Cache = require('../../src/adapters/Cache')
 
 /**
  * @type {Cache}

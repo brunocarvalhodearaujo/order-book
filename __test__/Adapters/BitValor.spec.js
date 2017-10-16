@@ -1,5 +1,5 @@
 /* eslint-env jest */
-import { BitValor } from '../../src/adapters/BitValor'
+const BitValor = require('../../src/adapters/BitValor')
 
 /**
  * @type {BitValor}

@@ -1,8 +1,7 @@
-import express from 'express'
-import { Exception } from '@paper/exception'
-import { BitValor } from '../adapters/BitValor'
+const express = require('express')
+const BitValor = require('../adapters/BitValor')
 
-export class Orders {
+module.exports = class Orders {
   constructor () {
     this.bitvalor = new BitValor()
   }
@@ -25,22 +24,22 @@ export class Orders {
    * @param {express.NextFunction} next
    */
   async get (request, response, next) {
-    const { type, exchange, min_value, max_value, min_quantity, max_quantity } = request.query
-
     try {
+      const { type, exchange, min_value, max_value, min_quantity, max_quantity } = request.query
+
       if (!type) {
-        throw new Exception('o parametro `type` não foi definido', 400)
+        return next({ message: 'o parametro `type` não foi definido', status: 400 })
       }
 
       if (type !== 'bids' && type !== 'asks') {
-        throw new Exception('o parametro `type` aceita somente os valores `bids` ou `asks`', 400)
+        return next({ message: 'o parametro `type` aceita somente os valores `bids` ou `asks`', status: 400 })
       }
 
       const orders = await this.bitvalor.getOrderBook(type, exchange, min_value, max_value, min_quantity, max_quantity)
 
       response.json({ [type]: orders })
     } catch (error) {
-      next(error instanceof Exception ? error : 500)
+      next(error)
     }
   }
 

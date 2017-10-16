@@ -1,5 +1,5 @@
-import fetch from 'node-fetch'
-import { Cache } from './Cache'
+const fetch = require('node-fetch')
+const Cache = require('./Cache')
 
 const URL_BITVALOR = 'https://api.bitvalor.com/v1'
 
@@ -13,7 +13,7 @@ const URL_BITVALOR = 'https://api.bitvalor.com/v1'
  * do Bitcoin no Brasil. Aproveite o uso, mas evite excessos!
  * limite de chamadas: no máximo 1 requisição por minuto.
  */
-export class BitValor {
+module.exports = class BitValor {
   constructor () {
     this.cache = new Cache()
   }
