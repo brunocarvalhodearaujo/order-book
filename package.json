@@ -4,6 +4,10 @@
   "description": "",
   "private": true,
   "author": "Bruno Carvalho de Araujo <brunocarvalhodearaujo@gmail.com>",
+  "engine": {
+    "node": ">=8.5.0",
+    "npm": ">=5.3.0"
+  },
   "scripts": {
     "test": "standard \"src/**/*.js\" \"test/**/*.js\" && jest --no-cache --coverage",
     "dev": "nodemon --watch src --exec \"npm start\"",

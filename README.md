@@ -2,6 +2,7 @@ BitValor
 ========
 
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Build Status](https://travis-ci.org/brunocarvalhodearaujo/order-book.svg?branch=master)](https://travis-ci.org/brunocarvalhodearaujo/order-book)
 [![bitHound Code](https://www.bithound.io/github/brunocarvalhodearaujo/order-book/badges/code.svg)](https://www.bithound.io/github/brunocarvalhodearaujo/order-book)
 [![bitHound Overall Score](https://www.bithound.io/github/brunocarvalhodearaujo/order-book/badges/score.svg)](https://www.bithound.io/github/brunocarvalhodearaujo/order-book)
 [![bitHound Dependencies](https://www.bithound.io/github/brunocarvalhodearaujo/order-book/badges/dependencies.svg)](https://www.bithound.io/github/brunocarvalhodearaujo/order-book/master/dependencies/npm)
