@@ -9,11 +9,13 @@
     "npm": ">=5.3.0"
   },
   "scripts": {
-    "test": "standard \"src/**/*.js\" \"test/**/*.js\" && jest --no-cache --coverage",
+    "preversion": "standard \"src/**/*.js\" \"test/**/*.js\"",
+    "test": "jest --no-cache --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "dev": "nodemon --watch src --exec \"npm start\"",
     "start": "node bin/www"
   },
   "devDependencies": {
+    "coveralls": "^3.0.0",
     "jest": "^21.2.1",
     "nodemon": "^1.12.1",
     "standard": "^10.0.3",
